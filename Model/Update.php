@@ -44,15 +44,13 @@ class Update extends Database {
    *
    * @param string $token
    *   Token send on Email.
-   *
    * @param string $Email_id
    *   User's Email.
-   *
    * @param string $Password
    *   User's new password.
    *
    * @return bool
-   *
+   *  Returns true on success.
    */
   public function resetPassword(string $email_id, string $password): bool {
       $update = $this->getConnection()->prepare("UPDATE User
@@ -70,7 +68,7 @@ class Update extends Database {
    * @param integer $quantity
    *   Number of items of each product.
    */
-  public function updateCart(string $product_id, int $quantity){
+  public function updateCart(string $product_id, int $quantity) {
     $update = $this->getConnection()->prepare("UPDATE cart
         SET quantity = ?
         WHERE product_id = ?");

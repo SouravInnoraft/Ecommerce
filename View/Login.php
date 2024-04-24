@@ -17,7 +17,7 @@
       </header>
       <main class="signup-body">
         <?php
-         if($msg!=''){
+         if ($msg!='') {
             ?>
             <p class=<?=$cls?>><?=$msg?></p>
             <?php
@@ -35,16 +35,6 @@
           <p>
             <input type="submit" id="submit" name="submit" value="Login">
           </p>
-          <!-- <div class="google-login">
-            <a href="
-            <?php
-              // $googleAuthenticator = new GoogleAuthenticator(); // Create an instance of the GoogleAuthenticator class
-              // $authUrl = $googleAuthenticator->getAuthorizationUrl(); // Get the authorization URL
-              // echo $authUrl;
-              // $auth = $googleAuthenticator->authenticate();
-               ?>">
-              <img src="../View/images/google-signin-button.png" width="270px"></a>
-            </p> -->
         </form>
       </main>
       <footer class="signup-footer">

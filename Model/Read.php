@@ -24,6 +24,7 @@ class Read extends Database {
    *   User's Email.
    *
    * @return bool
+   *   Returns true on success.
    */
   public function UserExist(string $email_id):bool {
     $sql_select = $this->getConnection()->prepare("SELECT email_id from
@@ -43,8 +44,11 @@ class Read extends Database {
    *
    * @param string $Email_id
    *   User's Email.
+   *
+   * @return array|null
+   *   Returns array on success and null on failure.
    */
-  public function getUser(string $email_id) {
+  public function getUser(string $email_id):array {
     $sql_select = $this->getConnection()->prepare("SELECT * from
     User where email_id = ?");
     $sql_select->execute([$email_id]);
@@ -56,13 +60,15 @@ class Read extends Database {
       return $rows;
     }
   }
-   /**
+
+  /**
    * Function to get post related data.
    *
    * @param string $Email_id
    *   User's Email.
    *
-   * @return  array
+   * @return array|null
+   *   Returns array on success and null on failure.
    */
   public function getPost():array {
     $sql_select = $this->getConnection()->prepare("SELECT * from product");
@@ -82,7 +88,8 @@ class Read extends Database {
    * @param string $search
    *   User provided value to be searched.
    *
-   * @return array
+   * @return array|null
+   *   Returns array on success and null on failure.
    */
   public function getPostwithSearch(string $search):array {
     $sql_select = $this->getConnection()->prepare("SELECT * from product where
@@ -101,13 +108,13 @@ class Read extends Database {
    *
    * @param string $Email_id
    *   User's email.
-   *
    * @param string $Password
    *   User entered password.
    *
    * @return bool
+   *   Returns true on success.
    */
-  public function isPasswordCorrect(string $email_id, string $password):bool{
+  public function isPasswordCorrect(string $email_id, string $password):bool {
     $sql_select = $this->getConnection()->prepare("SELECT * from
     User where email_id = ?");
     $sql_select->execute([$email_id]);
@@ -127,8 +134,11 @@ class Read extends Database {
    *   User's email.
    * @param int $product_id
    *   Product's id.
+   *
+   * @return Integer
+   *   Returns number of products on success.
    */
-  public function productExist(string $email_id, int $product_id){
+  public function productExist(string $email_id, int $product_id):int {
     $sql_select = $this->getConnection()->prepare("SELECT * from
     cart where email_id = ? and product_id=?");
     $sql_select->execute([$email_id,$product_id]);
@@ -146,8 +156,11 @@ class Read extends Database {
    *
    * @param string $email_id
    *   User's email id.
+   *
+   * @return array|null
+   *   Returns array on success and null on failure.
    */
-  public function displayCart(string $email_id){
+  public function displayCart(string $email_id):array {
     $sql_select = $this->getConnection()->prepare("SELECT * from
     cart as c INNER JOIN product as p ON c.product_id=p.product_id
     where email_id = ?");
@@ -167,7 +180,7 @@ class Read extends Database {
    * @param string $email_id
    *   User's email id.
    */
-  public function clearCart(string $email_id){
+  public function clearCart(string $email_id) {
     $sql_delete = $this->getConnection()->prepare("DELETE from
     cart where email_id = ?");
     $sql_delete->execute([$email_id]);

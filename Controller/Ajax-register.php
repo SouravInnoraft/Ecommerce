@@ -6,5 +6,5 @@ require_once __DIR__ .'./../Controller/ActionController.php';
 $action =new ActionController();
 
 $ans=$action->validateRegister($_POST['first_name'],
-$_POST['last_name'],$_POST['email_id'],$_POST['password']);
+$_POST['last_name'], $_POST['email_id'], $_POST['password']);
 

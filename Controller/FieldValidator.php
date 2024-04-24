@@ -21,10 +21,12 @@ class FieldValidator{
   }
 
   /**
-   * Undocumented function
+   * Function to validate password.
    *
    * @param string $password
+   *   User's password.
    * @return boolean
+   *   Return true if password is valid.
    */
   public function validatePassword(string $password): bool {
     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/';
@@ -36,7 +38,7 @@ class FieldValidator{
   }
 
   /**
-   * Undocumented function
+   * Function to validate name.
    *
    * @param string $name
    *   User's name

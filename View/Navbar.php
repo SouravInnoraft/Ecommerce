@@ -10,7 +10,6 @@
           <a class="nav-link active m-2" aria-current="page" href="/profile"> <?= $this->userData['fname'] ?> </a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="#">Link</a> -->
           <a class="nav-link" href="/cart">
             <img class="cart_icon" src="../Image/cart_icon.jpg">
           </a>

@@ -7,6 +7,7 @@ class Insertion extends Database {
 
   /**
    * Constructor function to initialise objects of the class.
+   *
    * @param string $username
    *   User's name.
    * @param string $password
@@ -51,7 +52,7 @@ class Insertion extends Database {
    * @param string $Password
    *   User's password.
    */
-  public function addToCart($email_id,$product_id,$quantity){
+  public function addToCart(string $email_id, string $product_id, string $quantity) {
     $sql_insert = $this->getConnection()->prepare("INSERT INTO cart
     (email_id,product_id,quantity) values (?,?,?)");
     $sql_insert->execute([$email_id, $product_id, $quantity]);

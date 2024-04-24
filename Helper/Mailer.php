@@ -13,6 +13,7 @@ use PHPMailer\PHPMailer\Exception;
  * A class to Send mail to a user for otp verification.
  */
 class Mailer {
+
   private $email;
   private $mail;
   private $otp;
@@ -21,19 +22,23 @@ class Mailer {
    *
    * @param string $email
    *   User provided email.
+   * 
    */
   public function __construct($email) {
     $this->email=$email;
     $this->mail = new PHPMailer(true);
   }
 
-/**
- * Function to sending otp
- *
- * @param integer $otp
- *   Otp generated.
- */
-  public function register(int $otp){
+  /**
+   * Function to sending otp
+   *
+   * @param integer $otp
+   *   Otp generated.
+   *
+   * @return boolean
+   *   Return true on success.
+   */
+  public function register(int $otp):bool{
     $this->otp=$otp;
     $this->mail->isSMTP();
     setUserData($this->mail);
@@ -53,8 +58,11 @@ class Mailer {
 
   /**
    * Function to sending otp
+   *
+   * @return boolean
+   *   Return true on success.
    */
-  public function sendBill(){
+  public function sendBill():bool{
     $this->mail->isSMTP();
     setUserData($this->mail);
     try {

@@ -14,10 +14,10 @@ function getOtp(e) {
       password: password
     },
     success: function (data) {
-      if(data==''){
+      if(data=='') {
         $('#msg').addClass('red').text('An Error Occured');
       }
-      else{
+      else {
         $('.signup-body').html(data);
       }
     },
@@ -27,7 +27,7 @@ function getOtp(e) {
   });
 }
 
-$(document).on('submit','#register-form', getOtp);
+$(document).on('submit', '#register-form', getOtp);
 
 function getResetOtp(e) {
   e.preventDefault();
@@ -66,7 +66,7 @@ function preloadData() {
 // Function call.
 $(window).on('load', preloadData);
 
-function cartData(){
+function cartData() {
   $.ajax({
     url: "Controller/Ajax-cart.php",
     type: "POST",
@@ -81,7 +81,7 @@ function cartData(){
   });
 }
 
-$(window).on('load',cartData);
+$(window).on('load', cartData);
 
 function searchData() {
   let search_term = $('#search-name').val();
@@ -106,7 +106,7 @@ function searchData() {
 }
 $('#search-name').on("keyup", searchData);
 
-function addtocart(){
+function addtocart() {
   let id = $(this).data('productid');
   $.ajax({
     url: 'Controller/ajax-addtocart.php',
@@ -122,9 +122,9 @@ function addtocart(){
     }
   })
 }
-$(document).on('click','#addtocart',addtocart);
+$(document).on('click', '#addtocart', addtocart);
 
-function clearCart(){
+function clearCart() {
   $.ajax({
     url: 'Controller/ajax-clearCart.php',
     type: 'POST',
@@ -137,9 +137,9 @@ function clearCart(){
     }
   })
 }
-$(document).on('click','#clear-cart',clearCart);
+$(document).on('click', '#clear-cart', clearCart);
 
-function sendBill(){
+function sendBill() {
   $.ajax({
     url: 'Controller/ajax-sendBill.php',
     type: 'POST',
@@ -152,4 +152,4 @@ function sendBill(){
     }
   })
 }
-$(document).on('click','#checkout',sendBill);
+$(document).on('click', '#checkout', sendBill);

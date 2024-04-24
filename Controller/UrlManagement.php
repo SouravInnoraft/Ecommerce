@@ -1,8 +1,14 @@
 <?php
 require_once __DIR__ . './../Controller/ActionController.php';
 
-class UrlManagement{
+/**
+ * Class for url routing.
+ */
+class UrlManagement {
+
+  // Instance variable for controlling actions.
   private $action;
+
   public function __construct() {
     $this->action = new ActionController();
   }
@@ -11,12 +17,13 @@ class UrlManagement{
    * Function for manage url.
    */
   public function login(){
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit'])) {
       if($this->action->validateLogin($_POST['email_id'],$_POST['password'])) {
         session_start();
         $_SESSION['email_id']=$_POST['email_id'];
         header('location:/home');
-      }else{
+      }
+      else {
          $msg='Invalid Login Creds';
          $cls='red';
       }
@@ -40,7 +47,7 @@ class UrlManagement{
         $msg='Register Succesfully';
         $cls='green';
       }
-      else{
+      else {
         $msg = 'Error occured';
         $cls = 'red';
       }
@@ -51,7 +58,7 @@ class UrlManagement{
   /**
    * Function for manage url.
    */
-  public function reset(){
+  public function reset() {
     if (isset($_POST['submit'])) {
       session_start();
       if ($_SESSION['OTP'] == $_POST['OTP']) {
@@ -62,7 +69,7 @@ class UrlManagement{
         $msg = 'Register Succesfully';
         $cls = 'green';
       }
-      else{
+      else {
         $msg = 'Error occured';
         $cls = 'red';
       }
@@ -73,19 +80,19 @@ class UrlManagement{
   /**
    * Function for manage url.
    */
-  public function Otp(){
+  public function Otp() {
     if (isset($_POST['submit'])) {
       header('location:/');
     }
     require_once __DIR__ .'/../View/Otp.php';
   }
 
-  public function home(){
+  public function home() {
     session_start();
-    if(isset($_SESSION['email_id'])){
+    if(isset($_SESSION['email_id'])) {
       require_once __DIR__.'/../View/Home.php';
     }
-    else{
+    else {
       $msg = "Can't Access this page if not logged in";
       $cls = 'red';
       header('location:/');
@@ -95,7 +102,7 @@ class UrlManagement{
   /**
    * Function for manage url.
    */
-  public function logout(){
+  public function logout() {
     session_start();
     // Unsetting Session Variables.
     session_unset();
@@ -110,15 +117,14 @@ class UrlManagement{
   /**
    * Function for manage url.
    */
-  public function cart(){
+  public function cart() {
     require_once __DIR__ .'/../View/Cart.php';
   }
 
   /**
    * Function for manage url.
    */
-  public function default(){
+  public function default() {
     require_once __DIR__ . '/../View/Login.php';
   }
-
 }

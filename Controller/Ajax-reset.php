@@ -6,4 +6,4 @@ require_once __DIR__ .'./../Controller/ActionController.php';
 $action =new ActionController();
 
 // Reseting password.
-$ans=$action->resetPassword($_POST['email_id'],$_POST['password']);
+$ans=$action->resetPassword($_POST['email_id'], $_POST['password']);

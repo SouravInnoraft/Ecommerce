@@ -1,8 +1,10 @@
 <?php
+
 /**
  * A class to create and initialise the database.
  */
 class Database {
+
   private $servername = 'localhost';
   private $conn;
 

@@ -53,8 +53,8 @@ class ActionController {
    * @return mixed
    *   Error or success message.
    */
-  public function validateRegister(string $first_name,string $last_name,
-  string $email_id,string $password):mixed {
+  public function validateRegister(string $first_name, string $last_name,
+  string $email_id, string $password):mixed {
     $msg='';
     $cls='';
    // Checking for valid email and password.
@@ -63,7 +63,7 @@ class ActionController {
     $this->validator->validateName($first_name) &&
     $this->validator->validateName($last_name) &&
     $this->validator->validatePassword($password)
-   ){
+   ) {
      // Checking if email id already registered or not.
       if ($this->select->UserExist($email_id)) {
         session_start();
@@ -98,7 +98,7 @@ class ActionController {
    */
   public function validateLogin(string $email_id, string $password):bool {
    // Checking if email id exists or not and verifying email and password matches or not.
-   if (!$this->select->UserExist($email_id) && $this->select->isPasswordCorrect($email_id,$password)){
+   if (!$this->select->UserExist($email_id) && $this->select->isPasswordCorrect($email_id,$password)) {
       return TRUE;
    }
    return FALSE;
@@ -112,11 +112,11 @@ class ActionController {
    *
    * @return mixed
    */
-  public function resetPassword(string $email_id):mixed{
+  public function resetPassword(string $email_id):mixed {
     $msg = '';
     $cls = '';
     // Checking if email id exists or not.
-  if (!$this->select->UserExist($email_id)){
+  if (!$this->select->UserExist($email_id)) {
       session_start();
       $_SESSION['email_id'] = $email_id;
      // Sending Otp
@@ -135,7 +135,7 @@ class ActionController {
  * @param string $email_id
  *   User's email id.
  */
-  public function sendOtp(string $email_id){
+  public function sendOtp(string $email_id) {
    session_start();
     $OTP = rand(1000, 9999);
     $_SESSION['OTP'] = $OTP;
@@ -153,7 +153,7 @@ class ActionController {
    * @param string $email_id
    *   User's email id.
    */
-  public function sendResetOtp(string $email_id){
+  public function sendResetOtp(string $email_id) {
     session_start();
     $OTP = rand(1000, 9999);
     $_SESSION['OTP'] = $OTP;
@@ -171,7 +171,7 @@ class ActionController {
    * @param string $email_id
    *   User's email id.
    */
-  public function sendBill(string $email_id){
+  public function sendBill(string $email_id) {
     // Creating an object of PHP-Mailer to send Otp via Mail.
     $Mail = new Mailer($email_id);
     // Calling class method and passing in the Otp to be send.
@@ -189,8 +189,8 @@ class ActionController {
    * @param string $password
    *   User's password.
    */
-  public function insertIntoUser(string $first_name, string $last_name, string $email_id, string $password){
-     $this->insert->insertUser($first_name,$last_name,$email_id,$password);
+  public function insertIntoUser(string $first_name, string $last_name, string $email_id, string $password) {
+     $this->insert->insertUser($first_name, $last_name, $email_id, $password);
   }
 
   /**
@@ -201,13 +201,13 @@ class ActionController {
    * @param string $password
    *   User's password.
    */
-  public function updateUser(string $email_id,string $password){
-    $this->update->resetPassword($email_id,$password);
+  public function updateUser(string $email_id, string $password) {
+    $this->update->resetPassword($email_id, $password);
   }
   /**
    * Function to get product data.
    */
-  public function getPost(){
+  public function getPost() {
    return $this->select->getPost();
   }
   /**
@@ -218,8 +218,8 @@ class ActionController {
    * @param integer $product_id
    *   Product id.
    */
-  public function productExist(string $email_id,int $product_id){
-    return $this->select->productExist($email_id,$product_id);
+  public function productExist(string $email_id,int $product_id) {
+    return $this->select->productExist($email_id, $product_id);
   }
   /**
    * Function to enter data into database.
@@ -233,7 +233,7 @@ class ActionController {
    * @param string $Password
    *   User's password.
    */
-  public function addToCart($email_id,$product_id,$quantity){
+  public function addToCart(string $email_id, string $product_id, int $quantity) {
    $this->insert->addToCart($email_id, $product_id, $quantity);
   }
 
@@ -245,8 +245,8 @@ class ActionController {
    * @param int $quantity
    *   Number of items of each product.
    */
-  public function updateCart($product_id,$quantity){
-    $this->update->updateCart($product_id,$quantity);
+  public function updateCart(string $product_id, int $quantity) {
+    $this->update->updateCart($product_id, $quantity);
   }
 
   /**
@@ -255,7 +255,7 @@ class ActionController {
    * @param string $email_id
    *   User's email id.
    */
-  public function displayCart($email_id){
+  public function displayCart(string $email_id) {
     return $this->select->displayCart($email_id);
   }
 
@@ -265,7 +265,7 @@ class ActionController {
    * @param string $email_id
    *   User's email id.
    */
-  public function clearCart(string $email_id){
+  public function clearCart(string $email_id) {
     $this->select->clearCart($email_id);
   }
 }

@@ -11,9 +11,8 @@ $env = new Dotenv();
  * @param mixed $mail
  *   An instance of PHPMailer is passed as a parameter to set all user
  *   related data.
- *
  */
-function setUserData(mixed $mail){
+function setUserData(mixed $mail) {
 
   // Set the SMTP server to send through.
   $mail->Host = $_ENV['host'];
@@ -67,7 +66,7 @@ function sendMailData(mixed $mail, string $otp) {
 
   // Set Subject and Email body.
   $mail->Subject = 'Here is your OTP';
-  $mail->Body    = "<h2 style='background-color:yellow'>{$otp}</h2>";
+  $mail->Body = "<h2 style='background-color:yellow'>{$otp}</h2>";
 }
 
 /**
