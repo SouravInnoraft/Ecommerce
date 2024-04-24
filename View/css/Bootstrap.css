@@ -1,0 +1,45 @@
+.content{
+   gap: 40px;
+  .card {
+      width: 275px;
+      /* height: 300px; */
+      img{
+        width: 100%;
+      }
+    }
+}
+#nav{
+ background-color: black;
+}
+.post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.search{
+  margin: 0 181px;
+}
+.cart_icon{
+  width: 45px;
+}
+.h1{
+  text-align: center;
+  margin-block:10px;
+}
+.card-text{
+  font-size: 12px;
+}
+.center{
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+}
+.cart-img{
+  width: 50px;
+  height: 50px;
+  img{
+    width: 100%;
+  }
+}
