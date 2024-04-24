@@ -135,7 +135,7 @@ class Read extends Database {
    * @param int $product_id
    *   Product's id.
    *
-   * @return Integer
+   * @return int
    *   Returns number of products on success.
    */
   public function productExist(string $email_id, int $product_id):int {

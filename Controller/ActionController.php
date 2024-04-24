@@ -87,7 +87,7 @@ class ActionController {
   }
 
   /**
-   *
+   * Function to validate login.
    *
    * @param string $email_id
    *   User's email id.
@@ -215,7 +215,7 @@ class ActionController {
    *
    * @param string $email_id
    *   User's email id
-   * @param integer $product_id
+   * @param int $product_id
    *   Product id.
    */
   public function productExist(string $email_id,int $product_id) {

@@ -65,7 +65,7 @@ class Update extends Database {
    *
    * @param string $product_id
    *   Product id.
-   * @param integer $quantity
+   * @param int $quantity
    *   Number of items of each product.
    */
   public function updateCart(string $product_id, int $quantity) {
